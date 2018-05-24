@@ -1,0 +1,2 @@
+jira_endpoint: https://jira.atlassian.com
+issue_exists_template: "The issue with id ${id} exists"
