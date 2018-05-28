@@ -1,19 +1,19 @@
 package main
 
 import (
-	"fmt"
-	client "go-scrum-master/jira"
-	"flag"
+	"go-scrum-master/alexa"
+	"os"
+)
+
+var (
+	arn string
 )
 
 func main() {
-	config := client.GetConfig()
-	jiraClient := client.CreateClient(&config)
+	arn = os.Getenv("ARN_FOR_START")
+	if arn == "" {
+		panic("NO Arn Given")
+	}
 
-	issue := flag.String("issue", "", "a string")
-
-	flag.Parse()
-
-	exists := jiraClient.IssueExists(*issue)
-	fmt.Printf("Issue exists %t\n", exists)
+	alexa.Start(arn)
 }
